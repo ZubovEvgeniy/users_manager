@@ -1,8 +1,34 @@
-<!DOCTYPE html> 
-<html lang="ru">
-  <head>
-  </head>
-  <body>
-    <h1>Главная страница</h1>
-  </body>
-</html> 
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block title %} Последние бновления на сайте {% endblock %}
+{% block content %} 
+<!-- класс py-5 создает отступы сверху и снизу блока -->
+<div class="container py-5">     
+  <h1>Пользователи сайта</h1>
+  <article>
+  {% for user in page_obj %}
+    <div class="row">
+    <article class="col-12 col-md-9">
+      <p>
+        <a href="{% url 'users:user_detail' user.id %}">Username: {{ user.username }}</a>
+      </p>
+      <p>
+        Имя: {{ user.first_name }}
+      </p>
+      <p>
+        Фамилия: {{ user.last_name }}
+      </p>
+      <p>
+        Адрес электронной почты: {{ user.email }}
+      </p>
+      <p>
+        Дата регистрации: {{ user.date_joined }}
+      </p>
+    <p></p>
+    </article>
+  </div>
+  {% endfor %} 
+  {% include 'includes/paginator.html' %}
+  </article>
+</div>
+{% endblock %}  

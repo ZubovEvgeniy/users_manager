@@ -1,0 +1,53 @@
+<header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'users:index' %}">
+        <span style="color:red">Users</span>Manager
+      </a>
+      {% comment %}
+      Меню - список пунктов со стандартными классами Bootsrap.
+      Класс nav-pills нужен для выделения активных пунктов 
+      {% endcomment %}
+      <ul class="nav nav-pills">
+
+        {% with request.resolver_match.view_name as view_name %}
+        
+        {% if user.is_authenticated %}
+
+        <li class="nav-item"> 
+          <a class="nav-link {% if view_name == 'users:user_detail' %}active{% endif %}" 
+            href="{% url 'users:user_detail' user.pk %}">Моя страница</a>
+        </li>
+        
+
+        <li class="nav-item"> 
+          <a class="nav-link link-light {% if view_name == 'users:password_change_form' %}active{% endif %}" 
+            href="{% url 'users:password_change_form' %}">Изменить пароль</a>
+        </li>
+
+        <li class="nav-item"> 
+          <a class="nav-link link-light" href="{% url 'users:logout' %}">Выйти</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link link-light">Пользователь: {{ user.username }}</a>
+        </li>
+
+        {% else %}
+
+        <li class="nav-item"> 
+          <a class="nav-link link-light {% if view_name == 'users:login' %}active{% endif %}" 
+            href="{% url 'users:login' %}">Войти</a>
+        </li>
+
+        <li class="nav-item"> 
+          <a class="nav-link link-light {% if view_name == 'users:signup' %}active{% endif %}" 
+            href="{% url 'users:signup' %}">Регистрация</a>
+        </li>
+
+        {% endif %}
+      </ul>
+      {% endwith %}
+    </div>
+  </nav>      
+</header>  
