@@ -31,6 +31,8 @@ docker-compose exec web python manage.py migrate
 docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
+Проект будет доступен по адресу  http://localhost/
+Админ панель доступна по адресу  http://localhost/admin/
 
 
 ## Технологии
