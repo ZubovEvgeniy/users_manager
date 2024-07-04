@@ -7,7 +7,9 @@
  - Просмотр страницы конкретного пользователя;
  - Редактирование личного профиля;
  - Сброс пароля с восстановлением через почту;
+
    При авторизации на сайте нажать кнопку "забыли пароль?".
+
    В директории /users_manager/sent_emails/ создастся файл письма с одноразовой ссылкой на форму создания нового пароля.
  - Идентификаторы пользователей в формате UUID4
  - Доступна админ панель http://localhost/admin/
@@ -33,8 +35,8 @@ docker-compose exec web python manage.py migrate
 docker-compose exec web python manage.py createsuperuser
 docker-compose exec web python manage.py collectstatic --no-input
 ```
+
 Проект будет доступен по адресу  http://localhost/
-Админ панель доступна по адресу  http://localhost/admin/
 
 
 ## Технологии
